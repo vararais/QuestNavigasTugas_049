@@ -195,3 +195,18 @@ fun FormulirScreen(
                 }
             )
         }
+
+        if (showErrorDialog) {
+            AlertDialog(
+                onDismissRequest = { showErrorDialog = false },
+                title = { Text(stringResource(id = R.string.data_tidakvalid)) },
+                text = { Text(stringResource(id = R.string.mohonisi_data)) },
+                confirmButton = {
+                    TextButton(onClick = { showErrorDialog = false }) {
+                        Text("OK")
+                    }
+                }
+            )
+        }
+    }
+}
