@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">QuestNavigasTugas_049</string>
+
+    <string name="selamat_datang">Selamat Datang!</string>
+    <string name="nama_anan">Anan Alvarais</string>
+    <string name="nim_anan">20230140049</string>
+    <string name="masuk">Masuk</string>
+
+    <string name="list_peserta">List Daftar Peserta</string>
+    <string name="beranda">Beranda</string>
+    <string name="formulir">Formulir</string>
+
+    <string name="formulir_daftar">Formulir Pendaftaran</string>
+    <string name="nama_lengkap">NAMA LENGKAP</string>
+    <string name="isi_nama_lengkap">Isikan nama lengkap</string>
+    <string name="jenis_kelamin">JENIS KELAMIN</string>
+    <string name="laki_laki">Laki-laki</string>
+    <string name="perempuan">Perempuan</string>
+    <string name="status_perkawinan">STATUS PERKAWINAN</string>
+    <string name="pilih_statuskawin">Pilih status kawin</string>
+    <string name="alamat">ALAMAT</string>
+    <string name="isi_alamat">Isikan alamat</string>
+    <string name="kembali">Kembali</string>
+    <string name="submit">Submit</string>
+
+    <string name="data_disimpan">Data Berhasil Disimpan</string>
+    <string name="data_tidakvalid">Data belum diisi</string>
+    <string name="mohonisi_data">Mohon isi data yang sesuai</string>
 </resources>
