@@ -33,21 +33,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.questnavigastugas_049.R
 
-data class FormData(
-    val nama: String,
-    val gender: String,
-    val status: String,
-    val alamat: String
-)
-
-fun getListData(): List<FormData> {
-    return listOf(
-        FormData("Asroni Sukirman", "Laki - Laki", "Cerai", "Sleman"),
-        FormData("Aprilia Kurnianti", "Perempuan", "Lajang", "Bantul"),
-        FormData("Haris Setyawan", "Laki - Laki", "Kawin", "Jogja"),
-        FormData("Dwijoko Purbohadi", "Laki - Laki", "Lajang", "Bantul")
-    )
-}
+import com.example.questnavigastugas_049.data.DataSource
+import com.example.questnavigastugas_049.data.FormData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -55,7 +42,7 @@ fun ListScreen(
     onBerandaClick: () -> Unit,
     onFormulirClick: () -> Unit
 ) {
-    val dataList = getListData()
+    val dataList = DataSource.dataList
 
     Scaffold(
         topBar = {
