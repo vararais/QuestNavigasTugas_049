@@ -1,10 +1,12 @@
 package com.example.questnavigastugas_049.view
 
+import android.R.attr.text
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -36,21 +38,21 @@ fun WelcomeScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(32.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = stringResource(id = R.string.selamat_datang),
-            fontSize = 24.sp
+            fontSize = 35.sp
         )
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(80.dp))
 
         Image(
             painter = painterResource(id = R.drawable.welcomee),
             contentDescription = "Logo Aplikasi",
-            modifier = Modifier.size(200.dp)
+            modifier = Modifier.size(300.dp)
         )
 
         Spacer(modifier = Modifier.height(32.dp))
@@ -58,7 +60,7 @@ fun WelcomeScreen(
         Text(text = stringResource(id = R.string.nama_anan))
         Text(text = stringResource(id = R.string.nim_anan))
 
-        Spacer(modifier = Modifier.height(48.dp))
+        Spacer(modifier = Modifier.height(120.dp))
 
         Button(
             onClick = {
@@ -71,9 +73,14 @@ fun WelcomeScreen(
                     }
                 }
             },
-            modifier = Modifier.padding(horizontal = 32.dp)
+            modifier = Modifier
+                .fillMaxWidth(0.8f)
+                .height(52.dp)
         ) {
-            Text(text = stringResource(id = R.string.masuk))
+            Text(
+                text = stringResource(id = R.string.masuk),
+                fontSize = 20.sp
+            )
         }
     }
 }
