@@ -79,7 +79,7 @@ fun WelcomeScreen(
         ) {
             Text(
                 text = stringResource(id = R.string.masuk),
-                fontSize = 33.sp
+                fontSize = 27.sp
             )
         }
     }
