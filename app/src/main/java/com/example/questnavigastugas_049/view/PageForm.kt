@@ -33,7 +33,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.sp
 import com.example.questnavigastugas_049.R
+import androidx.compose.material3.CenterAlignedTopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -58,9 +60,9 @@ fun FormulirScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
+            CenterAlignedTopAppBar(
                 title = { Text(stringResource(id = R.string.formulir_daftar), color = Color.White) },
-                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = colorResource(id = R.color.teal_700)
                 )
             )
@@ -149,7 +151,10 @@ fun FormulirScreen(
                     onClick = onBackBtnClick,
                     modifier = Modifier.weight(1f)
                 ) {
-                    Text(stringResource(id = R.string.kembali))
+                    Text(
+                        stringResource(id = R.string.kembali),
+                        fontSize = 20.sp
+                        )
                 }
                 Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.padding_medium)))
                 Button(
@@ -162,7 +167,10 @@ fun FormulirScreen(
                     },
                     modifier = Modifier.weight(1f)
                 ) {
-                    Text(stringResource(id = R.string.submit))
+                    Text(
+                        stringResource(id = R.string.submit),
+                        fontSize = 20.sp
+                        )
                 }
             }
         }

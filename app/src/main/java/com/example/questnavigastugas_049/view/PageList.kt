@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.questnavigastugas_049.R
+import androidx.compose.material3.CenterAlignedTopAppBar
 
 import com.example.questnavigastugas_049.data.DataSource
 import com.example.questnavigastugas_049.data.FormData
@@ -46,9 +47,9 @@ fun ListScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
+            CenterAlignedTopAppBar(
                 title = { Text(stringResource(id = R.string.list_peserta), color = Color.White) },
-                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = colorResource(id = R.color.purple_200)
                 )
             )
