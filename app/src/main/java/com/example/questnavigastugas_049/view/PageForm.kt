@@ -8,8 +8,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -36,6 +39,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import com.example.questnavigastugas_049.R
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -63,7 +67,7 @@ fun FormulirScreen(
             CenterAlignedTopAppBar(
                 title = { Text(stringResource(id = R.string.formulir_daftar), color = Color.White) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = colorResource(id = R.color.teal_700)
+                    containerColor = colorResource(id = R.color.purple_200)
                 )
             )
         }
@@ -74,103 +78,118 @@ fun FormulirScreen(
                 .padding(dimensionResource(id = R.dimen.padding_medium)),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            OutlinedTextField(
-                value = nama,
-                onValueChange = { nama = it },
-                label = { Text(stringResource(id = R.string.nama_lengkap)) },
-                placeholder = { Text(stringResource(id = R.string.isi_nama_lengkap)) },
+            Card(
                 modifier = Modifier.fillMaxWidth(),
-                singleLine = true
-            )
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_medium)))
-
-            Text(stringResource(id = R.string.jenis_kelamin), modifier = Modifier.fillMaxWidth())
-            Row(modifier = Modifier.fillMaxWidth()) {
-                jenisKelaminOptions.forEach { option ->
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        RadioButton(
-                            selected = (jenisKelamin == option),
-                            onClick = { jenisKelamin = option }
-                        )
-                        Text(text = option)
-                    }
-                }
-            }
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_medium)))
-
-            ExposedDropdownMenuBox(
-                expanded = isDropdownExpanded,
-                onExpandedChange = { isDropdownExpanded = !isDropdownExpanded }
+                shape = RoundedCornerShape(16.dp),
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
             ) {
-                OutlinedTextField(
-                    value = statusPerkawinan,
-                    onValueChange = {},
-                    readOnly = true,
-                    label = { Text(stringResource(id = R.string.status_perkawinan)) },
-                    placeholder = { Text(stringResource(id = R.string.pilih_statuskawin)) },
-                    trailingIcon = {
-                        ExposedDropdownMenuDefaults.TrailingIcon(expanded = isDropdownExpanded)
-                    },
+                Column(
                     modifier = Modifier
-                        .menuAnchor()
-                        .fillMaxWidth()
-                )
-                ExposedDropdownMenu(
-                    expanded = isDropdownExpanded,
-                    onDismissRequest = { isDropdownExpanded = false }
+                        .padding(vertical = 40.dp, horizontal = 40.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    statusOptions.forEach { option ->
-                        DropdownMenuItem(
-                            text = { Text(option) },
-                            onClick = {
-                                statusPerkawinan = option
-                                isDropdownExpanded = false
+                    OutlinedTextField(
+                        value = nama,
+                        onValueChange = { nama = it },
+                        label = { Text(stringResource(id = R.string.nama_lengkap)) },
+                        placeholder = { Text(stringResource(id = R.string.isi_nama_lengkap)) },
+                        modifier = Modifier.fillMaxWidth(),
+                        singleLine = true
+                    )
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_medium)))
+
+                    Text(
+                        stringResource(id = R.string.jenis_kelamin),
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    Row(modifier = Modifier.fillMaxWidth()) {
+                        jenisKelaminOptions.forEach { option ->
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                RadioButton(
+                                    selected = (jenisKelamin == option),
+                                    onClick = { jenisKelamin = option }
+                                )
+                                Text(text = option)
                             }
-                        )
-                    }
-                }
-            }
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_medium)))
-
-            OutlinedTextField(
-                value = alamat,
-                onValueChange = { alamat = it },
-                label = { Text(stringResource(id = R.string.alamat)) },
-                placeholder = { Text(stringResource(id = R.string.isi_alamat)) },
-                modifier = Modifier.fillMaxWidth(),
-                singleLine = true
-            )
-
-            Spacer(modifier = Modifier.weight(1f))
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround
-            ) {
-                Button(
-                    onClick = onBackBtnClick,
-                    modifier = Modifier.weight(1f)
-                ) {
-                    Text(
-                        stringResource(id = R.string.kembali),
-                        fontSize = 20.sp
-                        )
-                }
-                Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.padding_medium)))
-                Button(
-                    onClick = {
-                        if (nama.isBlank() || alamat.isBlank() || jenisKelamin.isBlank() || statusPerkawinan.isBlank()) {
-                            showErrorDialog = true
-                        } else {
-                            showSuccessDialog = true
                         }
-                    },
-                    modifier = Modifier.weight(1f)
-                ) {
-                    Text(
-                        stringResource(id = R.string.submit),
-                        fontSize = 20.sp
+                    }
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_medium)))
+
+                    ExposedDropdownMenuBox(
+                        expanded = isDropdownExpanded,
+                        onExpandedChange = { isDropdownExpanded = !isDropdownExpanded }
+                    ) {
+                        OutlinedTextField(
+                            value = statusPerkawinan,
+                            onValueChange = {},
+                            readOnly = true,
+                            label = { Text(stringResource(id = R.string.status_perkawinan)) },
+                            placeholder = { Text(stringResource(id = R.string.pilih_statuskawin)) },
+                            trailingIcon = {
+                                ExposedDropdownMenuDefaults.TrailingIcon(expanded = isDropdownExpanded)
+                            },
+                            modifier = Modifier
+                                .menuAnchor()
+                                .fillMaxWidth()
                         )
+                        ExposedDropdownMenu(
+                            expanded = isDropdownExpanded,
+                            onDismissRequest = { isDropdownExpanded = false }
+                        ) {
+                            statusOptions.forEach { option ->
+                                DropdownMenuItem(
+                                    text = { Text(option) },
+                                    onClick = {
+                                        statusPerkawinan = option
+                                        isDropdownExpanded = false
+                                    }
+                                )
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_medium)))
+
+                    OutlinedTextField(
+                        value = alamat,
+                        onValueChange = { alamat = it },
+                        label = { Text(stringResource(id = R.string.alamat)) },
+                        placeholder = { Text(stringResource(id = R.string.isi_alamat)) },
+                        modifier = Modifier.fillMaxWidth(),
+                        singleLine = true
+                    )
+
+                    Spacer(modifier = Modifier.height(32.dp))
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceAround
+                    ) {
+                        Button(
+                            onClick = onBackBtnClick,
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Text(
+                                stringResource(id = R.string.kembali),
+                                fontSize = 20.sp
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.padding_medium)))
+                        Button(
+                            onClick = {
+                                if (nama.isBlank() || alamat.isBlank() || jenisKelamin.isBlank() || statusPerkawinan.isBlank()) {
+                                    showErrorDialog = true
+                                } else {
+                                    showSuccessDialog = true
+                                }
+                            },
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Text(
+                                stringResource(id = R.string.submit),
+                                fontSize = 20.sp
+                            )
+                        }
+                    }
                 }
             }
         }
