@@ -1,12 +1,14 @@
 package com.example.questnavigastugas_049.view
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -70,4 +72,18 @@ fun FormulirScreen(
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true
             )
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_medium)))
+
+            Text(stringResource(id = R.string.jenis_kelamin), modifier = Modifier.fillMaxWidth())
+            Row(modifier = Modifier.fillMaxWidth()) {
+                jenisKelaminOptions.forEach { option ->
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        RadioButton(
+                            selected = (jenisKelamin == option),
+                            onClick = { jenisKelamin = option }
+                        )
+                        Text(text = option)
+                    }
+                }
+            }
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_medium)))
