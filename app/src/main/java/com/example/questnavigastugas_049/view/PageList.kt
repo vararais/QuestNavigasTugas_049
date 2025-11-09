@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -60,7 +62,7 @@ fun ListScreen(
             TopAppBar(
                 title = { Text(stringResource(id = R.string.list_peserta), color = Color.White) },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = colorResource(id = R.color.teal_700)
+                    containerColor = colorResource(id = R.color.purple_200)
                 )
             )
         },
@@ -68,15 +70,22 @@ fun ListScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .navigationBarsPadding()
                     .padding(dimensionResource(id = R.dimen.padding_medium)),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 Button(onClick = onBerandaClick, modifier = Modifier.weight(1f)) {
-                    Text(stringResource(id = R.string.beranda))
+                    Text(
+                        stringResource(id = R.string.beranda),
+                        fontSize = 20.sp
+                    )
                 }
                 Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.padding_medium)))
                 Button(onClick = onFormulirClick, modifier = Modifier.weight(1f)) {
-                    Text(stringResource(id = R.string.formulir))
+                    Text(
+                        stringResource(id = R.string.formulir),
+                        fontSize = 20.sp
+                    )
                 }
             }
         }
@@ -86,7 +95,7 @@ fun ListScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
                 .padding(
-                    top = 8.dp,
+                    top = 15.dp,
                     start = dimensionResource(id = R.dimen.padding_medium),
                     end = dimensionResource(id = R.dimen.padding_medium)
                 )
