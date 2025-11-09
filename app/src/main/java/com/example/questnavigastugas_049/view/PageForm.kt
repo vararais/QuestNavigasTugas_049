@@ -6,7 +6,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
@@ -83,6 +86,40 @@ fun FormulirScreen(
                             onClick = { jenisKelamin = option }
                         )
                         Text(text = option)
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_medium)))
+
+            ExposedDropdownMenuBox(
+                expanded = isDropdownExpanded,
+                onExpandedChange = { isDropdownExpanded = !isDropdownExpanded }
+            ) {
+                OutlinedTextField(
+                    value = statusPerkawinan,
+                    onValueChange = {},
+                    readOnly = true,
+                    label = { Text(stringResource(id = R.string.status_perkawinan)) },
+                    placeholder = { Text(stringResource(id = R.string.pilih_statuskawin)) },
+                    trailingIcon = {
+                        ExposedDropdownMenuDefaults.TrailingIcon(expanded = isDropdownExpanded)
+                    },
+                    modifier = Modifier
+                        .menuAnchor()
+                        .fillMaxWidth()
+                )
+                ExposedDropdownMenu(
+                    expanded = isDropdownExpanded,
+                    onDismissRequest = { isDropdownExpanded = false }
+                ) {
+                    statusOptions.forEach { option ->
+                        DropdownMenuItem(
+                            text = { Text(option) },
+                            onClick = {
+                                statusPerkawinan = option
+                                isDropdownExpanded = false
+                            }
+                        )
                     }
                 }
             }
