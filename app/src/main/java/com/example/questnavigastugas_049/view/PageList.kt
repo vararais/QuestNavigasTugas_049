@@ -1,6 +1,8 @@
 package com.example.questnavigastugas_049.view
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,7 +11,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -21,6 +26,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.questnavigastugas_049.R
 
 data class FormData(
@@ -87,3 +95,34 @@ fun ListScreen(
     }
 }
 
+@Composable
+fun PesertaCard(data: FormData) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .border(1.dp, Color.Gray, shape = CardDefaults.shape),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(id = R.dimen.padding_medium)),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = stringResource(id = R.string.nama_lengkap), fontSize = 12.sp, color = Color.Gray)
+                Text(text = data.nama, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_small)))
+                Text(text = stringResource(id = R.string.status_perkawinan), fontSize = 12.sp, color = Color.Gray)
+                Text(text = data.status, fontWeight = FontWeight.Bold)
+            }
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = stringResource(id = R.string.jenis_kelamin), fontSize = 12.sp, color = Color.Gray)
+                Text(text = data.gender, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_small)))
+                Text(text = stringResource(id = R.string.alamat), fontSize = 12.sp, color = Color.Gray)
+                Text(text = data.alamat, fontWeight = FontWeight.Bold)
+            }
+        }
+    }
+}
