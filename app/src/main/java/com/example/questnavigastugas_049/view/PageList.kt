@@ -85,7 +85,11 @@ fun ListScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(horizontal = dimensionResource(id = R.dimen.padding_medium))
+                .padding(
+                    top = 8.dp,
+                    start = dimensionResource(id = R.dimen.padding_medium),
+                    end = dimensionResource(id = R.dimen.padding_medium)
+                )
         ) {
             items(dataList) { data ->
                 PesertaCard(data = data)
