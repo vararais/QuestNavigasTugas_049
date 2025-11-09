@@ -30,3 +30,24 @@ fun TugasAppNavHost(
                 }
             )
         }
+
+        composable(route = Screen.List.name) {
+            ListScreen(
+                onFormulirClick = {
+                    navController.navigate(Screen.Form.name)
+                },
+                onBerandaClick = {
+                    navController.popBackStack(Screen.Welcome.name, inclusive = false)
+                }
+            )
+        }
+
+        composable(route = Screen.Form.name) {
+            FormulirScreen(
+                onBackBtnClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
+    }
+}
