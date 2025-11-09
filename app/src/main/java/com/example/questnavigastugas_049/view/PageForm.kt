@@ -124,3 +124,14 @@ fun FormulirScreen(
                 }
             }
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_medium)))
+
+            OutlinedTextField(
+                value = alamat,
+                onValueChange = { alamat = it },
+                label = { Text(stringResource(id = R.string.alamat)) },
+                placeholder = { Text(stringResource(id = R.string.isi_alamat)) },
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true
+            )
+
+            Spacer(modifier = Modifier.weight(1f))
