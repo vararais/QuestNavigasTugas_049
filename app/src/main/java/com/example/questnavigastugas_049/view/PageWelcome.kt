@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,6 +23,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.questnavigastugas_049.R
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun WelcomeScreen(
@@ -56,3 +59,21 @@ fun WelcomeScreen(
         Text(text = stringResource(id = R.string.nim_anan))
 
         Spacer(modifier = Modifier.height(48.dp))
+
+        Button(
+            onClick = {
+                if (!isLoading) {
+                    coroutineScope.launch {
+                        isLoading = true
+                        delay(2000)
+                        onMasukClick()
+                        isLoading = false
+                    }
+                }
+            },
+            modifier = Modifier.padding(horizontal = 32.dp)
+        ) {
+            Text(text = stringResource(id = R.string.masuk))
+        }
+    }
+}
