@@ -48,9 +48,9 @@ fun ListScreen(
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text(stringResource(id = R.string.list_peserta), color = Color.White) },
+                title = { Text(stringResource(id = R.string.list_peserta), color = Color.Black) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = colorResource(id = R.color.purple_200)
+                    containerColor = colorResource(id = R.color.white)
                 )
             )
         },
