@@ -1,11 +1,14 @@
 package com.example.questnavigastugas_049.view
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -135,3 +138,29 @@ fun FormulirScreen(
             )
 
             Spacer(modifier = Modifier.weight(1f))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround
+            ) {
+                Button(
+                    onClick = onBackBtnClick,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(stringResource(id = R.string.kembali))
+                }
+                Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.padding_medium)))
+                Button(
+                    onClick = {
+                        if (nama.isBlank() || alamat.isBlank() || jenisKelamin.isBlank() || statusPerkawinan.isBlank()) {
+                            showErrorDialog = true
+                        } else {
+                            showSuccessDialog = true
+                        }
+                    },
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(stringResource(id = R.string.submit))
+                }
+            }
+        }
